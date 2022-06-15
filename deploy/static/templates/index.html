@@ -1,0 +1,34 @@
+{% extends 'common/base.html' %}  #声明继承
+
+{% block title %}{{ 自动文本摘要 }}{% endblock %}
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+  <h1 style="text-align: center;">基于Bart自动文本摘要生成</h1>
+  </div>
+</div>
+<div class="alert p-3 mb-2 bg-danger" role="alert">
+    请勿重复提交
+</div>
+
+<div class="container-fluid">
+
+  <form action = "/summary" method = "POST">
+        
+    <div class="input-group">
+      <div class="row">
+        <textarea class="form-control" rows="5" cols="150" name="text"></textarea>
+      </div>
+      <div class="row text-center" style="padding-top: 15px">
+        <div class="input-group-append align-middle">
+        <button class="btn btn-outline-secondary btn-success" type="button submit">生成摘要</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <p class="bg-primary">{{result}}</p>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

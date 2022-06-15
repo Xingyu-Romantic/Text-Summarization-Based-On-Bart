@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="自动文本摘要生成">
+        <meta name="author" content="芦星宇">
+        <!-- <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">引入项目的图标，将需要的 ico 文件放到 static/images 文件夹下． -->
+
+        <title>{% block title %}自动文本摘要生成{% endblock %}</title>
+        <!--设置网页的标题，通过这样的设置，你可以利用 jinja2 的一些特性，将每个网页的标题进行不通的设置．-->
+
+        {% block css %}　<!--css模块区域-->
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='css/offcanvas.css') }}" rel="stylesheet">
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-right">
+                {% block content %}<!--自定义模板区域-->
+
+                {% endblock %}
+            </div><!--/row-->
+        </div>
+
+        {% block js %}<!--js模块区域-->
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/offcanvas.js') }}"></script> -->
+        {% endblock %}
+    </body>
+</html>

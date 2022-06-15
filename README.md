@@ -9,6 +9,11 @@
 pip install -r requirement.txt
 ```
 
+## Deploy
+
+
+
+
 
 
 ## Train
@@ -30,6 +35,8 @@ python task/test.py
 ```bash
 python task/predict.py
 ```
+
+
 
 
 

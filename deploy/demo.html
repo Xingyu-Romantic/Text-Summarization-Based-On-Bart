@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>PyScript Hello World</title>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  </head>
+
+  <body>
+    <py-env>
+    </py-env>
+
+
+    Hello world! <br>
+    <py-script src='../task/predict.py'>
+from predict import predict
+inputs = '''基于Transformer的预训练模型已经在各种下游任务中成为标配，但是在文本生成任务中，效果缺欠佳，BART的出现解决了这一瓶颈。基于BART预训练模型的自动摘要生成，以数据集Abstract\_cs和LCSTS为数据源，试验结果表明，该方法可以提高生成准确率，在小数据集上拟合效果良好，可以应用于小规模单领域的自动文本摘要任务。'''
+print(predict(inputs))
+    </py-script>
+  </body>
+</html>
