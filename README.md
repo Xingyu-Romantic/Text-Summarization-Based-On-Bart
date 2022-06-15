@@ -1,56 +1,35 @@
-# 江苏科技大学 NLP 大作业 - 文本摘要生成
+# 自动文本摘要生成 ![](https://img.shields.io/badge/license-Apache--2.0-blue) ![](https://img.shields.io/badge/PaddlePaddle-v2.3.0-blue) ![](https://img.shields.io/badge/PaddleNLP-v2.0.0-blue)
 > 2019 人工智能 芦星宇
 
-## 概述
-
-自动文本摘要可分为两类
-- 抽取式(extractive) 
-- 生成式(abstractive)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?lines=%E5%9F%BA%E4%BA%8EBart%E9%A2%84%E8%AE%AD%E7%BB%83%E7%9A%84%E8%87%AA%E5%8A%A8%E6%96%87%E6%9C%AC%E6%91%98%E8%A6%81%E7%94%9F%E6%88%90)](https://git.io/typing-svg)
 
 
-本项目是基于深度学习方法的生成式文本摘要。
-
-
-### 基本模型结构
-
-Encoder-Decoder结构，是seq2seq任务。
-
-Seq2Seq架构中的编码器和解码器通常由RNN or CNN实现。
-
-
-#### 基于递归神经网络的模型
-![](https://blog-10039692.file.myqcloud.com/1500955726134_2683_1500955726531.png)
-
-典型的基于RNN的Seq2Seq架构如下图
-![](https://blog-10039692.file.myqcloud.com/1500955743421_8105_1500955743936.png)
-
-图中展示的是一个用于自动回复邮件的模型，它的编码器和解码器分别由四层RNN的变种LSTM[5]组成。图中的向量thought vector编码了输入文本信息（Are you free tomorrow?），解码器获得这个向量依次解码生成目标文本（Yes, what's up?）。上述模型也可以自然地用于自动文本摘要任务，这时的输入为原文本（如新闻），输出为摘要（如新闻标题）。
-
-
-目前最好的基于RNN的Seq2Seq生成式文本摘要模型之一来自Salesforce，在基本的模型架构上，使用了注意力机制（attention mechanism）和强化学习（reinforcement learning）。这个模型将在下文中详细介绍。
-
-
-#### 基于卷积神经网络的模型
-
-一旦将文本表现成分布式向量（distributed representation/word embedding）[7]，我们就可以用一个实数矩阵/向量表示一句话/一个词。这样的分布式向量使我们能够在文本任务中应用CNN。
-
-
-### 评估方法
-
-为了更高效地评估自动文本摘要，可以选定一个或若干指标（metrics），基于这些指标比较生成的摘要和参考摘要（人工撰写，被认为是正确的摘要）进行自动评价。目前最常用、也最受到认可的指标是ROUGE（Recall-Oriented Understudy for Gisting Evaluation）。ROUGE是Lin提出的一个指标集合，包括一些衍生的指标，最常用的有ROUGE-n，ROUGE-L，ROUGE-SU：
-
-- ROUGE-n：该指标旨在通过比较生成的摘要和参考摘要的n-grams（连续的n个词）评价摘要的质量。常用的有ROUGE-1，ROUGE-2，ROUGE-3。
-- ROUGE-L：不同于ROUGE-n，该指标基于最长公共子序列（LCS）评价摘要。如果生成的摘要和参考摘要的LCS越长，那么认为生成的摘要质量越高。该指标的不足之处在于，它要求n-grams一定是连续的。
-- ROUGE-SU：该指标综合考虑uni-grams（n = 1）和bi-grams（n = 2），允许bi-grams的第一个字和第二个字之间插入其他词，因此比ROUGE-L更灵活。 作为自动评价指标，ROUGE和人工评定的相关度较高，在自动评价摘要中能给出有效的参考。但另一方面，从以上对ROUGE指标的描述可以看出，ROUGE基于字的对应而非语义的对应，生成的摘要在字词上与参考摘要越接近，那么它的ROUGE值将越高。但是，如果字词有区别，即使语义上类似，得到的ROUGE值就会变低。换句话说，如果一篇生成的摘要恰好是在参考摘要的基础上进行同义词替换，改写成字词完全不同的摘要，虽然这仍是一篇质量较高的摘要，但ROUGE值会呈现相反的结论。从这个极端但可能发生的例子可以看出，自动评价方法所需的指标仍然存在一些不足。目前，为了避免上述情况的发生，在evaluation时，通常会使用几篇摘要作为参考和基准，这有效地增加了ROUGE的可信度，也考虑到了摘要的不唯一性。对自动评价摘要方法的研究和探索也是目前自动文本摘要领域一个热门的研究方向。
-
-
-## 网络结构
-
-本文采用Transformers结构来进行文本摘要生成。
+## Installation
+```bash
+pip install -r requirement.txt
+```
 
 
 
+## Train
+**Note**: Introducing [wandb](https://wandb.ai/home) as training visualization tool.
 
+
+### Fine-tuning
+```bash
+wandb login # Wandb Token
+python task/train.py
+```
+
+### Test
+```bash
+python task/test.py
+```
+
+### Predict
+```bash
+python task/predict.py
+```
 
 
 
