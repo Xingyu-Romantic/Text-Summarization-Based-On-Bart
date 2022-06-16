@@ -1,4 +1,5 @@
 wandb
 rouge_score
 regex
+flask
 flask_bootstrap
