@@ -61,7 +61,7 @@
 
 
 
-## Installation
+## Installation :beers:
 ```bash
 pip install -r requirement.txt
 ```
