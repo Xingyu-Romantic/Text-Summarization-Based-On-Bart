@@ -69,7 +69,11 @@ pip install -r requirement.txt
 ## Deploy(Show on Web Site) :rocket:
 ```bash
 python deploy/deploy.py
+
+Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
+
+
 
 ## Train
 **Note**: Introducing [wandb](https://wandb.ai/home) as training visualization tool.
