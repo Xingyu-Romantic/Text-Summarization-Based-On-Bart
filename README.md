@@ -59,6 +59,9 @@
     └── train_utils.py
 ```
 
+## Download Weight
+
+Weight File: [Final_bart.pdparams LCSTS.pdparams](https://drive.google.com/drive/folders/1zZNn5mOi8qP1SOuSK_Q9ZuEWxK4GXRGD?usp=sharing)
 
 
 ## Installation :beers:
